@@ -1,0 +1,103 @@
+enclosure size: {length: 10.0, width: 10.0, height: 3.0}
+lights: [light1]
+cameras: [camera1] #, camera3, camera4]
+environment: "./mars_floor.yaml"
+namespace: /ambf/env/
+max iterations: 50
+gravity: {x: 0.0, y: 0.0, z: -3.711}
+# shaders:
+#   path: ../ambf_shaders/
+#   vertex: shader.vs
+#   fragment: shader.fs
+skybox:
+  path: ./skybox/galaxy/
+  # right: py.png
+  # left:  ny.png
+  # top: pz.png
+  # bottom: nz.png
+  # back: px.png
+  # front: nx.png
+  right: ny.png
+  left:  py.png
+  top: pz.png
+  bottom: nz.png
+  front: px.png
+  back: nx.png
+  shaders:
+    path: ./skybox/
+    vertex: "shader.vs"
+    fragment: "shader.fs"
+
+light1:
+  namespace: /ambf/env/lights/
+  name: light_left
+  location: {x: 0.0, y: 0.5, z: 2.5}
+  direction: {x: 0, y: 0, z: -1.0}
+  spot exponent: 0.3
+  shadow quality: 0
+  cutoff angle: 1.7
+
+light2:
+  namespace: lights/
+  name: light_right
+  location: {x: 0.5, y: -1, z: 2.5}
+  direction: {x: 0, y: 0, z: -1.0}
+  spot exponent: 0.3
+  shadow quality: 2
+  cutoff angle: 0.7
+
+light3:
+  location: {x: 0.5, y: 0.0, z: -0.5}
+  direction: {x: 0, y: 0, z: -1.0}
+  spot exponent: 0.3
+  shadow quality: 0
+  cutoff angle: 0.7
+  parent: /ambf/env/BODY LightCone
+
+camera1:
+  namespace: cameras/
+  name: default_camera
+  location: {x: 4.0, y: 0.0, z: 2.0}
+  look at: {x: 0.0, y: 0.0, z: -0.5}
+  up: {x: 0.0, y: 0.0, z: 1.0}
+  clipping plane: {near: 0.01, far: 50.0}
+  field view angle: 0.8
+  monitor: 0
+  # multipass: True
+  visible: True 
+
+camera2:
+  namespace: cameras/
+  name: default_camera2
+  location: {x: -1.5, y: 0.0, z: 0.2}
+  look at: {x: 0.5, y: 0.0, z: 0.5}
+  up: {x: 0.0, y: 0.0, z: 1.0}
+  clipping plane: {near: 0.01, far: 50.0}
+  field view angle: 0.8
+  monitor: 1
+  parent: arm_link5
+  # multipass: True
+
+camera3:
+  namespace: cameras/
+  name: default_camera3
+  location: {x: -4.5, y: 0.0, z: -0.5}
+  look at: {x: 0.5, y: 0.0, z: 0.5}
+  up: {x: 0.0, y: 0.0, z: 1.0}
+  clipping plane: {near: 0.01, far: 50.0}
+  field view angle: 0.8
+  monitor: 1
+  parent: rover1/BODY arm_link5
+  # multipass: True
+
+camera4:
+  namespace: cameras/
+  name: default_camera4
+  location: {x: -4.5, y: 0.0, z: -0.5}
+  look at: {x: 0.5, y: 0.0, z: 0.5}
+  up: {x: 0.0, y: 0.0, z: 1.0}
+  clipping plane: {near: 0.01, far: 50.0}
+  field view angle: 0.8
+  monitor: 1
+  parent: rover2/BODY arm_link5
+  # multipass: True
